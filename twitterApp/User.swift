@@ -29,7 +29,7 @@ class User {
             
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
-                
+                print (json)
                 guard let users = json["users"] as? [[String:AnyObject]]  else{
                     print ("No users Returned in Json")
                     completionHandlerForFollowers(nil,"Error in GetMyFollowers: missing users Key")

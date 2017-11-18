@@ -24,6 +24,9 @@ class FollowersViewController: UIViewController,UITableViewDataSource,UITableVie
         getFollowers()
 
     }
+    override func viewWillAppear(_ animated: Bool) {
+        print ("hahahahaha")
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return followers.count
     }
@@ -37,7 +40,7 @@ class FollowersViewController: UIViewController,UITableViewDataSource,UITableVie
         
         let string = NSMutableAttributedString(string: name, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14)])
         
-        string.append(NSMutableAttributedString(string:"@\(scName)", attributes: [NSAttributedStringKey.font  :UIFont.systemFont(ofSize: 14) ]))
+        string.append(NSMutableAttributedString(string:"\n@\(scName)", attributes: [NSAttributedStringKey.font  :UIFont.systemFont(ofSize: 14) ]))
         cell.textLabel?.attributedText = string
         User.sharedInstance().getImage(from: imageUrl) { (data, error) in
             if let data = data {
