@@ -9,27 +9,38 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        login()
-    }
-   
-    func login(){
-        let logInButton = TWTRLogInButton(logInCompletion: { session, error in
-            if (session != nil) {
-                print("signed in as \(session?.userName)");
-                
-            } else {
-                print("error: \(error?.localizedDescription)");
-            }
-            //print ( "-------------->" , Twitter.sharedInstance().sessionStore )
-            
-        })
-        logInButton.center = self.view.center
-        self.view.addSubview(logInButton)
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    
+        if  let userID = UserDefaults.standard.object(forKey: "id") as? String,let userName = UserDefaults.standard.object(forKey: "name") as? String{
+            User.sharedInstance().initMe(userID, userName)
+            presentNextView()
+        }
+        else{
+            login()
+        }
+    }
+    func login(){
+        User.sharedInstance().logUserIn(self) { (success, error) in
+            if success {
+                self.presentNextView()
+            }
+        }
+    }
+    
+    func presentNextView(){
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "followerVC") as! FollowersViewController
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+    
+    
 }
 

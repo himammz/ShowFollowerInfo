@@ -12,5 +12,6 @@ struct follower{
     let name:String?
     let screenName:String?
     let imageUrl:String?
+    let bio:String?
 }
 

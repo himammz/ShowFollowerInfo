@@ -13,26 +13,32 @@ import UIKit
 class FollowersViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
- 
+    
     var followers = [follower]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-       // tableView.rowHeight = UITableViewAutomaticDimension
+        // tableView.rowHeight = UITableViewAutomaticDimension
         //tableView.estimatedRowHeight = 44
+        print ("DidLoad")
         getFollowers()
-
+        
     }
     override func viewWillAppear(_ animated: Bool) {
-        print ("hahahahaha")
+        print ("Willappear")
+        
+        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return followers.count
     }
     
+    
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "followerCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "followerCell")!
         
         let name = followers[indexPath.row].name!
         let scName = followers[indexPath.row].screenName!
@@ -44,18 +50,22 @@ class FollowersViewController: UIViewController,UITableViewDataSource,UITableVie
         cell.textLabel?.attributedText = string
         User.sharedInstance().getImage(from: imageUrl) { (data, error) in
             if let data = data {
+                cell.imageView?.contentMode = UIViewContentMode.scaleToFill
                 cell.imageView?.image = UIImage(data: data)
             }
         }
         
+        cell.detailTextLabel?.text = followers[indexPath.row].bio
+        
         return cell
+        
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Followers"
     }
     
     
-  //  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    //  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     //   return UITableViewAutomaticDimension
     //}
     
@@ -64,8 +74,12 @@ class FollowersViewController: UIViewController,UITableViewDataSource,UITableVie
             
             if let followers = followers{
                 self.followers = followers
-                self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    
+                }
             }
+            
             
             
         }
