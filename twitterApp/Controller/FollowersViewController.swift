@@ -36,6 +36,9 @@ class FollowersViewController: UIViewController,UITableViewDataSource,UITableVie
         userDef.removeObject(forKey: "id")
         userDef.removeObject(forKey: "name")
         
+        User.sharedInstance().deleteFollowers()
+        User.sharedInstance().deleteAllTweets()
+        
         dismiss(animated: true, completion: nil)
         
     }

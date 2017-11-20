@@ -244,7 +244,7 @@ class User {
     
     
     func SaveTweets(_ screenName:String,_ tweets:[String]){
-        deleteTweets(screenName)
+        deleteTweetsForFellower(screenName)
         let owner  = getFollower(screenName)
         for tweet in tweets{
             let tweetInfo = Tweet(context: context)
@@ -276,11 +276,24 @@ class User {
         }
         
     }
-    func deleteTweets(_ scName:String){
+    func deleteTweetsForFellower(_ scName:String){
         let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Tweet")
         fetch.predicate = NSPredicate(format: "followerOwner.scName == %@", scName)
         let request = NSBatchDeleteRequest(fetchRequest: fetch)
         
+        
+        do {
+            try  context.execute(request)
+            try context.save()
+        } catch let error as NSError {
+            // TODO: handle the error
+            print ("Error While delete tweets.")
+        }
+        
+    }
+    func deleteAllTweets(){
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Tweet")
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
         
         do {
             try  context.execute(request)

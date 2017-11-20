@@ -74,14 +74,10 @@
 		0FD331AC1FBF470D008FA0BC /* twitterApp */ = {
 			isa = PBXGroup;
 			children = (
-				0FD602D11FC22F3F006C3A6C /* Model */,
 				0FD331AD1FBF470D008FA0BC /* AppDelegate.swift */,
-				0FD331AF1FBF470D008FA0BC /* ViewController.swift */,
-				0FD331B11FBF470D008FA0BC /* Main.storyboard */,
-				0F902D371FC1DCAE0061E43C /* FollowerInfoViweController.swift */,
-				0F402B691FC0A3DF00051BDD /* FollowersViewController.swift */,
-				0FD331B41FBF470D008FA0BC /* Assets.xcassets */,
-				0FD331B61FBF470E008FA0BC /* LaunchScreen.storyboard */,
+				0FD602D11FC22F3F006C3A6C /* Model */,
+				0FF952AC1FC369760055F70A /* Controller */,
+				0FFED5F11FC3768A005963A1 /* View */,
 				0FD331B91FBF470E008FA0BC /* Info.plist */,
 				0F20A7751FC03351004F7965 /* test.m */,
 				0F20A7741FC0334F004F7965 /* twitterApp-Bridging-Header.h */,
@@ -97,6 +93,26 @@
 				0F4E46141FC3003400AB03F7 /* FollowersData.xcdatamodeld */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0FF952AC1FC369760055F70A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0FD331AF1FBF470D008FA0BC /* ViewController.swift */,
+				0F902D371FC1DCAE0061E43C /* FollowerInfoViweController.swift */,
+				0F402B691FC0A3DF00051BDD /* FollowersViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0FFED5F11FC3768A005963A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0FD331B11FBF470D008FA0BC /* Main.storyboard */,
+				0FD331B41FBF470D008FA0BC /* Assets.xcassets */,
+				0FD331B61FBF470E008FA0BC /* LaunchScreen.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		65CA7CD658F5A0190406320C /* Pods */ = {
