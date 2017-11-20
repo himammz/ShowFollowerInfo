@@ -96,11 +96,6 @@ class FollowersViewController: UIViewController,UITableViewDataSource,UITableVie
                 }
             }
             
-            
-            
-            
-            
-            
         }
     }
     

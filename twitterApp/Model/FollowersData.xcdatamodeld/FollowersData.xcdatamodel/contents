@@ -6,13 +6,14 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="profileImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="scName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="has" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tweet" inverseName="followerOwner" inverseEntity="Tweet" syncable="YES"/>
     </entity>
     <entity name="Tweet" representedClassName="Tweet" syncable="YES" codeGenerationType="class">
         <attribute name="tweetText" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="followerOwner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FollowerInfo" syncable="YES"/>
+        <relationship name="followerOwner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FollowerInfo" inverseName="has" inverseEntity="FollowerInfo" syncable="YES"/>
     </entity>
     <elements>
-        <element name="FollowerInfo" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="FollowerInfo" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="Tweet" positionX="189" positionY="-9" width="128" height="75"/>
     </elements>
 </model>

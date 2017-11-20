@@ -59,11 +59,16 @@ class FollowerInfoViweController: UIViewController,UITableViewDataSource,UITable
         User.sharedInstance().getFollowerTweets(follower.screenName!) { (tweets, error) in
             if let tweets = tweets{
                 self.tweets = tweets
-                DispatchQueue.main.async{
-                self.tableView.reloadData()
-                }
+    
+            }else {
+                
+                self.tweets = User.sharedInstance().getTweetsOffline(self.follower.screenName!)
+                
             }
             
+            DispatchQueue.main.async{
+                self.tableView.reloadData()
+            }
         }
         
     }
