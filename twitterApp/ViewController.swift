@@ -36,7 +36,7 @@ class ViewController: UIViewController {
     }
     
     func presentNextView(){
-        let controller = self.storyboard?.instantiateViewController(withIdentifier: "followerVC") as! FollowersViewController
+        let controller = self.storyboard?.instantiateViewController(withIdentifier: "followerNavigation") as! UINavigationController
         self.present(controller, animated: true, completion: nil)
     }
     

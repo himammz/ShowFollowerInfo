@@ -22,6 +22,7 @@ class FollowersViewController: UIViewController,UITableViewDataSource,UITableVie
         // tableView.rowHeight = UITableViewAutomaticDimension
         //tableView.estimatedRowHeight = 44
         print ("DidLoad")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(logout))
         getFollowers()
         
     }
@@ -29,6 +30,14 @@ class FollowersViewController: UIViewController,UITableViewDataSource,UITableVie
         print ("Willappear")
         
         
+    }
+    @objc func logout(){
+        let userDef = UserDefaults.standard
+        userDef.removeObject(forKey: "id")
+        userDef.removeObject(forKey: "name")
+        
+        dismiss(animated: true, completion: nil)
+    
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return followers.count
@@ -65,9 +74,11 @@ class FollowersViewController: UIViewController,UITableViewDataSource,UITableVie
     }
     
     
-    //  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    //   return UITableViewAutomaticDimension
-    //}
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let nextController = self.storyboard?.instantiateViewController(withIdentifier: "followerDetailes") as! FollowerInfoViweController
+        nextController.follower = followers[indexPath.row]
+        navigationController?.pushViewController(nextController, animated: true)
+    }
     
     func getFollowers(){
         User.sharedInstance().getMyFollowers { (followers, error) in

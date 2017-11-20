@@ -68,12 +68,12 @@ class User {
                 }
                 var followers = [follower]()
                 for user in users{
-                    guard let img = user["profile_image_url_https"] as? String , let name = user["name"] as? String ,let scName = user["screen_name"] as? String  ,let desc = user["description"] as? String  else{
+                    guard let img = user["profile_image_url_https"] as? String , let name = user["name"] as? String ,let scName = user["screen_name"] as? String  ,let desc = user["description"] as? String , let background = user["profile_background_image_url_https"] as? String else{
                         print ("No data for this user")
                         continue
                     }
-                    followers.append(follower(name: name, screenName: scName, imageUrl: img, bio: desc))
-                    print ("\(name)   @\(scName) ")
+                    followers.append(follower(name: name, screenName: scName, imageUrl: img, bio: desc, backgroundImageUrl: background))
+                   // print ("\(name)   @\(scName) ")
                 }
                 
                 
@@ -104,6 +104,48 @@ class User {
         
         
     }
+    
+    
+    func getFollowerTweets(_ screenName:String, completionHandlerForFollowerDetails: @escaping (_ tweets:[String]?, _ errorString:String?)-> Void){
+        
+        let client = TWTRAPIClient()
+        let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline.json"
+        let params = ["screen_name": screenName ,"count": "10"]
+        var clientError : NSError?
+        
+        let request = client.urlRequest(withMethod: "GET", url: statusesShowEndpoint, parameters: params, error: &clientError)
+        
+        client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
+            if connectionError != nil {
+                print("Error: \(connectionError)")
+                completionHandlerForFollowerDetails(nil, connectionError?.localizedDescription)
+                return
+            }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as? [[String:AnyObject]]
+                //print("json: \(json)")
+                var  tweets = [String]()
+                for tweetInfo in json!{
+                    guard let tweet = tweetInfo["text"] as? String else{
+                        print ("text key not found!!")
+                        continue
+                    }
+                    
+                    tweets.append(tweet)
+
+                }
+                
+                completionHandlerForFollowerDetails(tweets, nil)
+            } catch let jsonError as NSError {
+                print("json error: \(jsonError.localizedDescription)")
+                completionHandlerForFollowerDetails(nil, jsonError.localizedDescription)
+            }
+        }
+    }
+    
+    
+    
     
     class func sharedInstance() -> User {
         struct Singleton {
