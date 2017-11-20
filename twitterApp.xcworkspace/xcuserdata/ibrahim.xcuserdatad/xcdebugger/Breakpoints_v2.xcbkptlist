@@ -266,39 +266,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.154877"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "SaveFollowersInfo(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.156756"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
-            landmarkName = "SaveFollowersInfo(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.15772"
+            timestampString = "532898268.545483"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "183"
@@ -314,11 +282,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.158597"
+            timestampString = "532898268.587368"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "SaveFollowersInfo(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "twitterApp/Model/User.swift"
+            timestampString = "532898268.58845"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "SaveFollowersInfo(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "twitterApp/Model/User.swift"
+            timestampString = "532898268.589416"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "getFollowersOffline()"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,7 +330,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.159514"
+            timestampString = "532898268.590381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.160152"
+            timestampString = "532898268.591299"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "SaveTweets(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.160831"
+            timestampString = "532898268.59235"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "deleteTweets(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.161504"
+            timestampString = "532898268.593757"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
             landmarkName = "getTweetsOffline(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,7 +394,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.162125"
+            timestampString = "532898268.594688"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.163265"
+            timestampString = "532898268.595646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "getMyFollowers(completionHandlerForFollowers:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -426,7 +426,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.164485"
+            timestampString = "532898268.596714"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "81"
@@ -442,7 +442,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.16539"
+            timestampString = "532898268.597646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
@@ -458,7 +458,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.166197"
+            timestampString = "532898268.598593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
@@ -474,7 +474,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.16682"
+            timestampString = "532898268.599514"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
@@ -490,7 +490,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.16742"
+            timestampString = "532898268.600447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
@@ -506,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.167979"
+            timestampString = "532898268.601355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "getMyFollowers(completionHandlerForFollowers:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -522,11 +522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.168576"
+            timestampString = "532898268.602412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "getImage(from:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -538,11 +538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.169134"
+            timestampString = "532898268.603355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "SaveTweets(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -554,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.16972"
+            timestampString = "532898268.604253"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "getTweetsOffline(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -570,11 +570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.170282"
+            timestampString = "532898268.605184"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
             landmarkName = "SaveTweets(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "twitterApp/Model/User.swift"
-            timestampString = "532895395.170806"
+            timestampString = "532898268.606078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "getFollower(_:)"
             landmarkType = "7">
          </BreakpointContent>

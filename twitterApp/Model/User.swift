@@ -75,7 +75,7 @@ class User {
                     }
                     var background = "https://mareeg.com/wp-content/uploads/2016/11/twitter.jpg"
                     
-                    if  let bacImg = user["profile_background_image_url_https"] as? String {
+                    if  let bacImg = user["profile_banner_url"] as? String {
                         background = bacImg
                     }
                     
@@ -90,13 +90,24 @@ class User {
                     
                     //print (background)
                     //print ("-------")
-                   let  imageData2 = self.getImage(from: background)
+                    let  imageData2 = self.getImage(from: background)
                     if let imgData = imageData2{
                         backgroundImgData = imgData
+                    }else {
+                        // somtime api returns path without last part "1500x500"
+                       backgroundImgData = self.getImage(from: "\(background)/1500x500")
+                        
+                        if backgroundImgData == nil {
+                            background = "https://mareeg.com/wp-content/uploads/2016/11/twitter.jpg"
+                            self.getImage(from: background)
+                        }
+                        
+                        
+                        
                     }
                     
                     followers.append(follower(name: name, screenName: scName, imageData: profImgData, bio: desc, backgroundImageData: backgroundImgData))
-                
+                    
                     // print ("\(name)   @\(scName) ")
                 }
                 
@@ -121,11 +132,11 @@ class User {
             let imageData = try  Data(contentsOf: url!)
             return imageData
         }catch {
-            print (url)
+            //print (url)
             return nil
             
         }
-  
+        
     }
     
     
@@ -215,12 +226,12 @@ class User {
             followersInfo = try context.fetch(fetch)
             
             for followerInfo in followersInfo{
-              /*  print (followerInfo.name)
-                print (followerInfo.scName)
-                print (followerInfo.profileImage)
-                print (followerInfo.bio)
-                print (followerInfo.backgroundImage)
-                print ("----------")*/
+                /*  print (followerInfo.name)
+                 print (followerInfo.scName)
+                 print (followerInfo.profileImage)
+                 print (followerInfo.bio)
+                 print (followerInfo.backgroundImage)
+                 print ("----------")*/
                 followers.append(follower(name: followerInfo.name!, screenName: followerInfo.scName!, imageData: followerInfo.profileImage!, bio: followerInfo.bio!, backgroundImageData: followerInfo.backgroundImage!) )
             }
             
@@ -241,9 +252,9 @@ class User {
             tweetInfo.tweetText = tweet
             
             
-            print (owner?.scName!)
+           // print (owner?.scName!)
             tweetInfo.followerOwner = owner!
-            print ("-->", tweetInfo.followerOwner?.scName!)
+           // print ("-->", tweetInfo.followerOwner?.scName!)
             
             do{
                 ad.saveContext()
@@ -256,7 +267,7 @@ class User {
     }
     func getFollower (_ scName:String) -> FollowerInfo?{
         let fetch:NSFetchRequest<FollowerInfo> = FollowerInfo.fetchRequest()
-         fetch.predicate = NSPredicate(format: "scName == %@", scName)
+        fetch.predicate = NSPredicate(format: "scName == %@", scName)
         do{
             let Finfo = try context.fetch(fetch)
             return Finfo[0]
@@ -291,7 +302,7 @@ class User {
             tweetsInfo = try context.fetch(fetch)
             
             for tweet in tweetsInfo{
-                print (tweet.followerOwner?.scName)
+                //print (tweet.followerOwner?.scName)
                 tweets.append(tweet.tweetText!)
             }
             
