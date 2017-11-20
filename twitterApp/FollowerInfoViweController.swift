@@ -47,13 +47,11 @@ class FollowerInfoViweController: UIViewController,UITableViewDataSource,UITable
         
         followerName.text = follower.name!
         
-        var url = URL(string: follower.backgroundImageUrl!)
-        var Dataimage = try! Data(contentsOf: url!)
-        backgroundImage.image = UIImage(data:Dataimage )
+        var imgData = follower.backgroundImageData!
+        backgroundImage.image = UIImage(data:imgData)
         
-        url = URL(string:follower.imageUrl!)
-        Dataimage = try! Data(contentsOf: url!)
-        profileImage.image = UIImage(data:Dataimage )
+        imgData = follower.imageData!
+        profileImage.image = UIImage(data:imgData)
         
     }
     

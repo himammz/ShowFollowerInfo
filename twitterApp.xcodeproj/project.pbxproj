@@ -11,6 +11,7 @@
 		0F402B6A1FC0A3DF00051BDD /* FollowersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F402B691FC0A3DF00051BDD /* FollowersViewController.swift */; };
 		0F402B6C1FC0DFD800051BDD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F402B6B1FC0DFD800051BDD /* User.swift */; };
 		0F402B6E1FC0E86600051BDD /* follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F402B6D1FC0E86600051BDD /* follower.swift */; };
+		0F4E46161FC3003400AB03F7 /* FollowersData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F4E46141FC3003400AB03F7 /* FollowersData.xcdatamodeld */; };
 		0F902D381FC1DCAE0061E43C /* FollowerInfoViweController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F902D371FC1DCAE0061E43C /* FollowerInfoViweController.swift */; };
 		0FD331AE1FBF470D008FA0BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD331AD1FBF470D008FA0BC /* AppDelegate.swift */; };
 		0FD331B01FBF470D008FA0BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD331AF1FBF470D008FA0BC /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 		0F402B691FC0A3DF00051BDD /* FollowersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersViewController.swift; sourceTree = "<group>"; };
 		0F402B6B1FC0DFD800051BDD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0F402B6D1FC0E86600051BDD /* follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = follower.swift; sourceTree = "<group>"; };
+		0F4E46151FC3003400AB03F7 /* FollowersData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FollowersData.xcdatamodel; sourceTree = "<group>"; };
 		0F902D371FC1DCAE0061E43C /* FollowerInfoViweController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerInfoViweController.swift; sourceTree = "<group>"; };
 		0FD331AA1FBF470D008FA0BC /* twitterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FD331AD1FBF470D008FA0BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			children = (
 				0F402B6B1FC0DFD800051BDD /* User.swift */,
 				0F402B6D1FC0E86600051BDD /* follower.swift */,
+				0F4E46141FC3003400AB03F7 /* FollowersData.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F402B6C1FC0DFD800051BDD /* User.swift in Sources */,
+				0F4E46161FC3003400AB03F7 /* FollowersData.xcdatamodeld in Sources */,
 				0F402B6A1FC0A3DF00051BDD /* FollowersViewController.swift in Sources */,
 				0FD331B01FBF470D008FA0BC /* ViewController.swift in Sources */,
 				0F402B6E1FC0E86600051BDD /* follower.swift in Sources */,
@@ -440,6 +444,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0F4E46141FC3003400AB03F7 /* FollowersData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0F4E46151FC3003400AB03F7 /* FollowersData.xcdatamodel */,
+			);
+			currentVersion = 0F4E46151FC3003400AB03F7 /* FollowersData.xcdatamodel */;
+			path = FollowersData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0FD331A21FBF470C008FA0BC /* Project object */;
 }

@@ -15,7 +15,7 @@ class User {
     func initMe(_ id:String ,_ name:String){
         userName = name
         userID = id
-    
+        
     }
     func logUserIn(_ controllerSender:UIViewController, completionHandelerForLogIn: @escaping (_ success:Bool, _ errorString:String?) -> Void ){
         
@@ -39,7 +39,6 @@ class User {
         controllerSender.view.addSubview(logInButton)
         
     }
-    
     
     func getMyFollowers(completionHandlerForFollowers: @escaping (_ followers: [follower]?, _ errorString: String?) -> Void)
     {
@@ -68,15 +67,35 @@ class User {
                 }
                 var followers = [follower]()
                 for user in users{
-                    guard let img = user["profile_image_url_https"] as? String , let name = user["name"] as? String ,let scName = user["screen_name"] as? String  ,let desc = user["description"] as? String , let background = user["profile_background_image_url_https"] as? String else{
+                    guard let img = user["profile_image_url_https"] as? String , let name = user["name"] as? String ,let scName = user["screen_name"] as? String  ,let desc = user["description"] as? String  else{
                         print ("No data for this user")
                         continue
                     }
-                    followers.append(follower(name: name, screenName: scName, imageUrl: img, bio: desc, backgroundImageUrl: background))
-                   // print ("\(name)   @\(scName) ")
+                    var background:String
+                    if  user["profile_banner_url"] == nil{
+                        background = "https://mareeg.com/wp-content/uploads/2016/11/twitter.jpg"
+                    }
+                    else {
+                        background = user["profile_banner_url"] as! String
+                    }
+                    var profImgData:Data?
+                    var backgroundImgData:Data?
+                    self.getImage(from: img, completionHandlerForImage: { (imageData, error) in
+                        if let imgData = imageData{
+                            profImgData = imgData
+                        }
+                        
+                    })
+                    self.getImage(from: background, completionHandlerForImage: { (imageData, error) in
+                        if let imgData = imageData{
+                            backgroundImgData = imgData
+                        }
+                    })
+                    followers.append(follower(name: name, screenName: scName, imageData: profImgData, bio: desc, backgroundImageData: backgroundImgData))
+                    // print ("\(name)   @\(scName) ")
                 }
                 
-                
+                self.SaveFollowersInfo(followers)
                 completionHandlerForFollowers(followers,nil)
                 
                 
@@ -133,7 +152,7 @@ class User {
                     }
                     
                     tweets.append(tweet)
-
+                    
                 }
                 
                 completionHandlerForFollowerDetails(tweets, nil)
@@ -146,7 +165,61 @@ class User {
     
     
     
-    
+    func SaveFollowersInfo(_ followers:[follower]){
+        deleteFollowers()
+        for follower in followers{
+            let followerData = FollowerInfo(context: context)
+            
+            followerData.name = follower.name
+            followerData.scName = follower.screenName
+            followerData.bio = follower.bio
+            followerData.profileImage = follower.imageData
+            followerData.backgroundImage = follower.backgroundImageData
+            
+            do{
+                ad.saveContext()
+            }catch{
+                print ("cant save")
+            }
+            
+        }
+        
+        
+    }
+    func deleteFollowers(){
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "FollowerInfo")
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        
+        
+        do {
+            try  context.execute(request)
+            try context.save()
+        } catch let error as NSError {
+            // TODO: handle the error
+            print ("Error While delete Follower data")
+        }
+        
+        
+        
+    }
+    func getFollowersOffline() -> [follower]{
+        let fetch:NSFetchRequest<FollowerInfo> = FollowerInfo.fetchRequest()
+        
+        var followersInfo:[FollowerInfo]
+        var followers = [follower]()
+        do{
+            followersInfo = try context.fetch(fetch)
+            
+            for followerInfo in followersInfo{
+                followers.append(follower(name: followerInfo.name!, screenName: followerInfo.scName!, imageData: followerInfo.profileImage!, bio: followerInfo.bio!, backgroundImageData: followerInfo.backgroundImage!) )
+            }
+            
+        }catch{
+            print ("can't Load Follower offline")
+            
+        }
+        return followers
+    }
     class func sharedInstance() -> User {
         struct Singleton {
             static var sharedInstance = User()

@@ -37,7 +37,7 @@ class FollowersViewController: UIViewController,UITableViewDataSource,UITableVie
         userDef.removeObject(forKey: "name")
         
         dismiss(animated: true, completion: nil)
-    
+        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return followers.count
@@ -51,18 +51,16 @@ class FollowersViewController: UIViewController,UITableViewDataSource,UITableVie
         
         let name = followers[indexPath.row].name!
         let scName = followers[indexPath.row].screenName!
-        let imageUrl = followers[indexPath.row].imageUrl!
+        let imageData = followers[indexPath.row].imageData!
         
         let string = NSMutableAttributedString(string: name, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 14)])
         
         string.append(NSMutableAttributedString(string:"\n@\(scName)", attributes: [NSAttributedStringKey.font  :UIFont.systemFont(ofSize: 14) ]))
         cell.textLabel?.attributedText = string
-        User.sharedInstance().getImage(from: imageUrl) { (data, error) in
-            if let data = data {
-                cell.imageView?.contentMode = UIViewContentMode.scaleToFill
-                cell.imageView?.image = UIImage(data: data)
-            }
-        }
+        cell.imageView?.contentMode = UIViewContentMode.scaleToFill
+        cell.imageView?.image = UIImage(data: imageData)
+        
+        
         
         cell.detailTextLabel?.text = followers[indexPath.row].bio
         
@@ -89,7 +87,17 @@ class FollowersViewController: UIViewController,UITableViewDataSource,UITableVie
                     self.tableView.reloadData()
                     
                 }
+            }else {
+                let followers = User.sharedInstance().getFollowersOffline()
+                self.followers = followers
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    
+                }
             }
+            
+            
+            
             
             
             

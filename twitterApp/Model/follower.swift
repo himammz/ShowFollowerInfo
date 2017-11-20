@@ -11,9 +11,9 @@ import Foundation
 struct follower{
     let name:String?
     let screenName:String?
-    let imageUrl:String?
+    let imageData:Data?
     let bio:String?
-    let backgroundImageUrl:String?
+    let backgroundImageData:Data?
 }
 
 
