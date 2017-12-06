@@ -8,10 +8,11 @@
 
 import UIKit
 
-class FollowerInfoViweController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class FollowerInfoViweController: UIViewController,UITableViewDataSource,UITableViewDelegate,UINavigationControllerDelegate {
     
     var follower:follower!
     var tweets = [String]()
+    var index:Int!
     
     @IBOutlet weak var followerName: UILabel!
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -21,6 +22,8 @@ class FollowerInfoViweController: UIViewController,UITableViewDataSource,UITable
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        navigationController?.delegate = self
+
         addDetails()
         loadTweets()
         
@@ -46,9 +49,29 @@ class FollowerInfoViweController: UIViewController,UITableViewDataSource,UITable
     func addDetails(){
         
         followerName.text = follower.name!
+        // call model to get imageData first
+        var imgData:Data
         
-        var imgData = follower.backgroundImageData!
-        backgroundImage.image = UIImage(data:imgData)
+        if let imageData = follower.backgroundImageData  as? Data{
+            
+            backgroundImage.image = UIImage(data:imageData)
+            
+        }else {
+            if let urlString = follower.backgroundURLString as? String{
+            follower.backgroundImageData = User.sharedInstance().getBackgroundImage(urlString: follower.backgroundURLString!)
+            if let img = follower.backgroundImageData{
+                imgData = follower.backgroundImageData!
+                backgroundImage.image = UIImage(data:imgData)
+
+            
+                User.sharedInstance().savBackgroundImage(follower.screenName!,imgData)
+                }
+                
+            }
+            
+        }
+
+
         
         imgData = follower.imageData!
         profileImage.image = UIImage(data:imgData)
@@ -59,7 +82,7 @@ class FollowerInfoViweController: UIViewController,UITableViewDataSource,UITable
         User.sharedInstance().getFollowerTweets(follower.screenName!) { (tweets, error) in
             if let tweets = tweets{
                 self.tweets = tweets
-    
+                
             }else {
                 
                 self.tweets = User.sharedInstance().getTweetsOffline(self.follower.screenName!)
@@ -72,6 +95,14 @@ class FollowerInfoViweController: UIViewController,UITableViewDataSource,UITable
         }
         
     }
-    
+   
+   
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if let dest = viewController as? FollowersViewController{
+        dest.followers[index] = follower
+        }
+    }
     
 }
+
+

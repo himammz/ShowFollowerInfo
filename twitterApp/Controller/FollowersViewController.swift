@@ -78,6 +78,7 @@ class FollowersViewController: UIViewController,UITableViewDataSource,UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextController = self.storyboard?.instantiateViewController(withIdentifier: "followerDetailes") as! FollowerInfoViweController
         nextController.follower = followers[indexPath.row]
+        nextController.index = indexPath.row
         navigationController?.pushViewController(nextController, animated: true)
     }
     

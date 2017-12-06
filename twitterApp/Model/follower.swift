@@ -13,7 +13,8 @@ struct follower{
     let screenName:String?
     let imageData:Data?
     let bio:String?
-    let backgroundImageData:Data?
+    var backgroundImageData:Data?
+    let backgroundURLString:String?
 }
 
 

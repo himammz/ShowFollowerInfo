@@ -73,6 +73,7 @@ class User {
                         print ("No data for this user")
                         continue
                     }
+                    // default background if the user has no one .
                     var background = "https://mareeg.com/wp-content/uploads/2016/11/twitter.jpg"
                     
                     if  let bacImg = user["profile_banner_url"] as? String {
@@ -80,33 +81,17 @@ class User {
                     }
                     
                     var profImgData:Data?
-                    var backgroundImgData:Data?
                     
                     //print (img)
-                    let imageData1 = self.getImage(from: img)
-                    if let imgData = imageData1{
+                    let imageData = self.getImageData(from: img)
+                    if let imgData = imageData{
                         profImgData = imgData
                     }
                     
-                    //print (background)
-                    //print ("-------")
-                    let  imageData2 = self.getImage(from: background)
-                    if let imgData = imageData2{
-                        backgroundImgData = imgData
-                    }else {
-                        // somtime api returns path without last part "1500x500"
-                       backgroundImgData = self.getImage(from: "\(background)/1500x500")
-                        
-                        if backgroundImgData == nil {
-                            background = "https://mareeg.com/wp-content/uploads/2016/11/twitter.jpg"
-                            self.getImage(from: background)
-                        }
-                        
-                        
-                        
-                    }
                     
-                    followers.append(follower(name: name, screenName: scName, imageData: profImgData, bio: desc, backgroundImageData: backgroundImgData))
+                    
+                    
+                    followers.append(follower(name: name, screenName: scName, imageData: profImgData, bio: desc, backgroundImageData: nil, backgroundURLString: background ))
                     
                     // print ("\(name)   @\(scName) ")
                 }
@@ -125,7 +110,28 @@ class User {
         }
     }
     
-    func getImage(from: String) ->Data?
+    func getBackgroundImage(urlString:String)->Data?
+    {
+        var backgroundImgData:Data?
+
+        let  imageData = self.getImageData(from: urlString)
+        
+        if let imgData = imageData{
+            backgroundImgData = imgData
+        }else {
+            // sometimes api returns path without last part "1500x500"
+            backgroundImgData = self.getImageData(from: "\(urlString)/1500x500")
+            
+            if backgroundImgData == nil {
+                let background = "https://mareeg.com/wp-content/uploads/2016/11/twitter.jpg"
+                backgroundImgData = self.getImageData(from: background)
+            }
+            
+        }
+        return backgroundImgData
+    }
+    
+    func getImageData(from: String) ->Data?
     {
         let url =  URL(string: from)
         do{
@@ -201,6 +207,15 @@ class User {
         
         
     }
+    func savBackgroundImage(_ scName :String, _ imageData:Data)  {
+        
+        let follower = getFollower(scName)
+        follower?.backgroundImage = imageData
+        
+        ad.saveContext()
+        
+        
+    }
     func deleteFollowers(){
         let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "FollowerInfo")
         let request = NSBatchDeleteRequest(fetchRequest: fetch)
@@ -214,9 +229,8 @@ class User {
             print ("Error While delete Follower data")
         }
         
-        
-        
     }
+    
     func getFollowersOffline() -> [follower]{
         let fetch:NSFetchRequest<FollowerInfo> = FollowerInfo.fetchRequest()
         
@@ -230,9 +244,11 @@ class User {
                  print (followerInfo.scName)
                  print (followerInfo.profileImage)
                  print (followerInfo.bio)
+ 
                  print (followerInfo.backgroundImage)
-                 print ("----------")*/
-                followers.append(follower(name: followerInfo.name!, screenName: followerInfo.scName!, imageData: followerInfo.profileImage!, bio: followerInfo.bio!, backgroundImageData: followerInfo.backgroundImage!) )
+                 print ("----------")
+ */
+                followers.append(follower(name: followerInfo.name!, screenName: followerInfo.scName!, imageData: followerInfo.profileImage!, bio: followerInfo.bio!, backgroundImageData: followerInfo.backgroundImage, backgroundURLString: nil) )
             }
             
         }catch{
